@@ -1,0 +1,32 @@
+{
+  "name": "bulkbuy",
+  "version": "1.0.0",
+  "description": "- **Backend**:\r - **Database**:\r - **Authentication**:\r - **Testing**:\r - **Version Control**:\r - **Deployment**:",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "Arnold",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^3.0.2",
+    "compression": "^1.8.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "express-mongo-sanitize": "^2.2.0",
+    "express-rate-limit": "^7.5.0",
+    "helmet": "^8.0.0",
+    "hpp": "^0.2.3",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.11.0",
+    "morgan": "^1.10.0",
+    "mysql2": "^3.12.0",
+    "nodemailer": "^6.10.0",
+    "nodemon": "^3.1.9",
+    "stripe": "^17.7.0",
+    "validator": "^13.12.0",
+    "xss-clean": "^0.1.4"
+  }
+}
