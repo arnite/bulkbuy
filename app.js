@@ -9,6 +9,8 @@ const compression = require('compression');
 const morgan = require('morgan');
 const app = express();
 const integrateDB = require('./config/db');
+const AppError = require('./utils/appError');
+const globalerrorhandler = require('./controllers/errorController.js');
 const superAdmin = require('./config/superAdmin');
 
 // Integrate database
@@ -88,5 +90,15 @@ app.get('/success', (req, res) => {
 app.get('/cancel', (req, res) => {
   res.send('Payment canceled.');
 });
+
+// Main Routes
+
+// Unresolved Route
+app.all('*', (req, res, next) => {
+  next(new AppError(`Can't find ${req.originalUrl} on this server`, 404));
+});
+
+// Error handler
+app.use(globalerrorhandler);
 
 module.exports = app;
