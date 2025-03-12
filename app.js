@@ -9,6 +9,10 @@ const compression = require('compression');
 const morgan = require('morgan');
 const app = express();
 const integrateDB = require('./config/db');
+const userRoute = require('./routes/userRoute.js');
+const productRoute = require('./routes/productRoute.js');
+const orderRoute = require('./routes/orderRoute.js');
+const cartRoute = require('./routes/cartRoute.js');
 const AppError = require('./utils/appError');
 const globalerrorhandler = require('./controllers/errorController.js');
 const superAdmin = require('./config/superAdmin');
@@ -70,13 +74,13 @@ app.get('/', (req, res) => {
       <h1 style="color: blue; font-size: 2em;"><strong>API is Running Successfully</strong></h1>
       <p style="font-size: 1.2em;">The backend is operational and ready to handle requests.</p>
       <p>For API documentation, visit: 
-        <a href="Input the link here." target="_blank" style="color: green; font-weight: bold;">
+        <a href="" target="_blank" style="color: green; font-weight: bold;">
           Postman Collection
         </a>
       </p>
       <script>
         setTimeout(() => {
-            window.location.href = "Input the link here.";
+            window.location.href = "";
         }, 3000); // Redirect after 3 seconds
       </script>
     </div>
@@ -92,6 +96,10 @@ app.get('/cancel', (req, res) => {
 });
 
 // Main Routes
+app.use('/api/v1/users', userRoute);
+app.use('/api/v1/products', productRoute);
+app.use('/api/v1/cart', cartRoute);
+app.use('/api/v1/orders', orderRoute);
 
 // Unresolved Route
 app.all('*', (req, res, next) => {
