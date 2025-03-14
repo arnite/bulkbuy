@@ -74,13 +74,13 @@ app.get('/', (req, res) => {
       <h1 style="color: blue; font-size: 2em;"><strong>API is Running Successfully</strong></h1>
       <p style="font-size: 1.2em;">The backend is operational and ready to handle requests.</p>
       <p>For API documentation, visit: 
-        <a href="" target="_blank" style="color: green; font-weight: bold;">
+        <a href="https://documenter.getpostman.com/view/37611500/2sAYkBrLYW" target="_blank" style="color: green; font-weight: bold;">
           Postman Collection
         </a>
       </p>
       <script>
         setTimeout(() => {
-            window.location.href = "";
+            window.location.href = "https://documenter.getpostman.com/view/37611500/2sAYkBrLYW";
         }, 3000); // Redirect after 3 seconds
       </script>
     </div>
