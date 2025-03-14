@@ -1,10 +1,5 @@
 const AppError = require('./../utils/appError');
 
-const handlecasterror = (err) => {
-  const message = `Invalid ${err.path}: ${err.value}`;
-  return new AppError(message, 400);
-};
-
 const sendErrorDev = (err, res) => {
   res.status(err.statusCode).json({
     status: err.status,
@@ -16,6 +11,7 @@ const sendErrorDev = (err, res) => {
 
 const sendErrorProd = (err, res) => {
   //Operational or trusted error: send message to client
+  console.error('Error in production:', err);
   if (err.isOperational) {
     res.status(err.statusCode).json({
       status: err.status,
@@ -38,9 +34,6 @@ module.exports = (err, req, res, next) => {
     sendErrorDev(err, res);
   } else if (process.env.NODE_ENV === 'production') {
     let error = err;
-
-    if (error.name === 'CastError') error = handlecasterror(error);
-    if (error.code === 11000) error = handleduplicatefield(error);
     sendErrorProd(error, res);
   }
 };
