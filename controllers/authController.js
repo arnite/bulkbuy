@@ -37,21 +37,6 @@ exports.signUp = catchAsync(async (req, res, next) => {
     passwordConfirm: req.body.passwordConfirm,
   });
 
-  //Send email to user and the token
-  try {
-    await sendEmail({
-      email: newUser.email,
-      subject: 'SignUp successful',
-      message: 'You have successfully signed up to Bulkbuy.',
-    });
-  } catch (err) {
-    return next(
-      new AppError(
-        `There was an error sending the email. Try again later!: ${err.message}`
-      )
-    );
-  }
-
   //Create token
   const token = signToken(newUser._id);
 
