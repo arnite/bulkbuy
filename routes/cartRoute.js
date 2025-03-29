@@ -14,6 +14,6 @@ router.use(protect, restrictTo('user'));
 
 router.get('/getMyCart', cartExtra, getCart);
 router.route('/').post(cartMiidleWare, addToCart);
-router.route('/:id').patch(updateCart).delete(deleteCart);
+router.route('/:id').delete(deleteCart);
 
 module.exports = router;
